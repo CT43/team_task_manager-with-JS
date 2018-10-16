@@ -3,11 +3,11 @@
 <ul>
   <li>Position: <%= @user.position %></li>
   <li>Team <%= @user.team.name %></li>
-  <li>Lists </li>
-  <% @user.lists.each do |list| %>
+  <li><%= link_to "Lists", user_lists_path(@user) %> </li>
+  <!-- <% @user.lists.each do |list| %>
   <%= link_to list.name, user_list_path(@user, list) %>
   <br>
-  <% end %>
+  <% end %> -->
 </ul>
 
 <p>  <%= link_to "Create New List", new_user_list_path(@user) %></p>
