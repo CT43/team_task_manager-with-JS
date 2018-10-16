@@ -1,0 +1,16 @@
+
+<h2><%= @team.name %></h2>
+<% @team.users.each do |user| %>
+
+  <%= user.name %> ---
+  <% if current_user.position > user.position && !user.lists.empty? %>
+    <%= link_to "new list", new_list_path(:user_id => user.id)%>
+  <% end %>
+  <% user.lists.each do|list|  %>
+    <%= link_to list.name, user_list_path(current_user, list) %>
+  <% end %>
+    <br>
+    <br>
+<% end %>
+
+<%= link_to "Total tasks", "/task_count" %>

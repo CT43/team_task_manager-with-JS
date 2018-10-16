@@ -1,0 +1,15 @@
+<h2><%= @list.name %> </h2>
+
+<% @list.tasks.each do |task| %>
+<%= form_for(task) do |f| %>
+    <%= f.label :name do %>
+      <%= f.check_box :completed %>
+      <%= task.name %>
+      <%= f.submit %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<% if current_user.position > @list.user.position %>
+  <%= link_to 'Delete', "/lists/#{@list.id}", method: :delete%>
+<% end %>

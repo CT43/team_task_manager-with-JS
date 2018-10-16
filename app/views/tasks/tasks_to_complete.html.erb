@@ -1,0 +1,9 @@
+<% @tasks.each do |task| %>
+<%= form_for(task) do |f| %>
+    <%= f.label :name do %>
+      <%= f.check_box :completed %>
+      <%= task.name %>
+      <%= f.submit %>
+    <% end %>
+  <% end %>
+<% end %>

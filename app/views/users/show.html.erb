@@ -1,0 +1,13 @@
+<h1>Welcome! <%= @user.name %> </h1>
+
+<ul>
+  <li>Position: <%= @user.position %></li>
+  <li>Team <%= @user.team.name %></li>
+  <li>Lists </li>
+  <% @user.lists.each do |list| %>
+  <%= link_to list.name, user_list_path(@user, list) %>
+  <br>
+  <% end %>
+</ul>
+
+<p>  <%= link_to "Create New List", new_user_list_path(@user) %></p>

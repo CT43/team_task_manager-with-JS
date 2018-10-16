@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TeamTaskManager</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <ul>
+      <% if current_user %>
+        <li><%= link_to " #{current_user.name}'s Homepage", user_path(current_user) %></li>
+        <li><%= link_to " #{current_user.team.name} Team's Homepage", user_team_path(current_user, current_user.team) %></li>
+        <li><%= link_to "Your Lists", user_lists_path(current_user) %></li>
+        <li><%= link_to "Log Out", signout_path, method: :delete %></li>
+      <% else %>
+        <li><%= link_to "Log In", login_path, class: "btn btn-primary" %></li>
+        <li><%= link_to "Sign Up", new_user_path, class: "btn btn-primary" %></li>
+        <li><%= link_to('Log in with Facebook!', '/auth/facebook') %></li>
+      <% end %>
+    </ul>
+
+
+    <%= yield %>
+  </body>
+</html>

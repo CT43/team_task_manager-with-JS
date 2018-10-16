@@ -1,0 +1,8 @@
+<h1>Lists</h1>
+
+<% @lists.each do |list| %>
+<%= link_to list.name, user_list_path(current_user, list) %>
+<% end %>
+
+<br> <br>
+<%= link_to "View all Uncompleted Tasks", "/users/#{current_user.id}/tasks_to_complete" %>
