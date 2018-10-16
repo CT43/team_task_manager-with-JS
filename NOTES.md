@@ -1,30 +1,12 @@
-to-do
+  * use Active Model Serialization JSON backend
 
+1. index resource - users lists
 
-add more validations - user
-add list edit view
-add team view
-add
+2. show resource - sift through user's lists
 
+3. has_many - tasks for a list
 
-add partials
+4. create resource - create tasks dynamically
 
-
-
-
-
-
-
-
-
-
-
-set up team view
-  team home
-
-allow high position to view teammembers lists, create lists, and change them
-
-validations
-
-
-add partials
+5. ** after all above tasks completed
+    translate JSON responses to JS model objects
