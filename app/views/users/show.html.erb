@@ -4,6 +4,10 @@
   <li>Position: <%= @user.position %></li>
   <li>Team <%= @user.team.name %></li>
   <li><%= link_to "Lists", user_lists_path(@user), id: "lists_link" %> </li>
+    <div id="listed_lists">
+      <ol>
+      </ol>
+    </div>
   <!-- <% @user.lists.each do |list| %>
   <%= link_to list.name, user_list_path(@user, list) %>
   <br>

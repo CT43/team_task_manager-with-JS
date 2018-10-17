@@ -28,6 +28,7 @@ class ListsController < ApplicationController
   def index
     if params[:user_id]
       @lists = User.find(params[:user_id]).lists
+      render :json => @lists
     else
       @lists = List.all
     end
