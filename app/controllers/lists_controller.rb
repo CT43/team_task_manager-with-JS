@@ -38,10 +38,14 @@ class ListsController < ApplicationController
   end
 
   def show
-    @list = List.find_by(id: params[:id])
-    respond_to do |format|
-        format.json {render :json => @list}
-        format.html {render 'show.html.erb'}
+    if params[:user_id]
+      @list = List.find_by(id: params[:id])
+      respond_to do |format|
+          format.json {render :json => @list}
+          format.html {render 'show.html.erb'}
+      end
+    else
+      render 'index.html.erb'
     end
   end
 
