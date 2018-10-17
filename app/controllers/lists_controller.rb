@@ -39,6 +39,10 @@ class ListsController < ApplicationController
 
   def show
     @list = List.find_by(id: params[:id])
+    respond_to do |format|
+        format.json {render :json => @list}
+        format.html {render 'show.html.erb'}
+    end
   end
 
   def destroy

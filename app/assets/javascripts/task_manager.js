@@ -11,4 +11,17 @@ $(document).ready(function(){
 
     e.preventDefault()
   })
+
+  $("a#list_nav_link").on("click", function(e){
+    // $.get(this.href).success(function(response){
+    //   var $lists = $("div#lists")
+    //   $lists.html("")
+    //   debugger
+    //   $lists.append()
+    // })
+
+    $('div#lists').load(this.href + ' div#lists>*')
+
+    e.preventDefault()
+  })
 })
