@@ -3,7 +3,6 @@ $(document).ready(function(){
     $.get(this.href).success(function(response){
       var $ol = $("div#listed_lists ol")
       $ol.html("")
-      debugger
 
       response.forEach(function(list){
         $ol.append("<li><a href="+`/users/${list.user_id}/lists/${list.id}`+">"+list.name+"</a></li>")

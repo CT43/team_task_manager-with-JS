@@ -1,15 +1,21 @@
 <h2><%= @list.name %> </h2>
 
-<% @list.tasks.each do |task| %>
-<%= form_for(task) do |f| %>
-    <%= f.label :name do %>
-      <%= f.check_box :completed %>
-      <%= task.name %>
-      <%= f.submit %>
+<div id="lists">
+  <% @list.tasks.each do |task| %>
+  <%= form_for(task) do |f| %>
+      <%= f.label :name do %>
+        <%= f.check_box :completed %>
+        <%= task.name %>
+        <%= f.submit %>
+      <% end %>
     <% end %>
   <% end %>
-<% end %>
+</div>
 
 <% if current_user.position > @list.user.position %>
   <%= link_to 'Delete', "/lists/#{@list.id}", method: :delete%>
 <% end %>
+
+<div id="list_navigation">
+   <%= link_to "previous", "/users/#{@list.user_id}/lists/#{@list.id - 1}" %>     <%= link_to "next", "/users/#{@list.user_id}/lists/#{@list.id + 1}" %>  
+</div>
