@@ -10,6 +10,10 @@ function List(attributes){
   this.user_id = attributes.user_id;
 }
 
+function Lists(attributes){
+  debugger
+}
+
 List.success = function(json){
   var list = new List(json);
   var listDiv = list.renderDiv()
@@ -18,8 +22,8 @@ List.success = function(json){
   $lists.append(listDiv)
 }
 
-List.success = function(json){
-  var list = new List(json);
+List.lists = function(json){
+  var list = new Lists(json);
   var listDiv = list.renderDiv()
   var $lists = $("div#lists")
   $lists.html("")
@@ -43,7 +47,9 @@ List.linkClick = function(e){
 }
 
 List.listsClick = function(e){
+  debugger
   e.preventDefault()
+  debugger
 
   $.ajax({
     url: this.href,
@@ -81,7 +87,10 @@ List.listsClick = function(e){
 // }
 List.linkClickListener = function(){
   $('a.list_nav_link').on("click", List.linkClick)
-  $("a#lists_link").on("click", List.listsClick)
+}
+
+Lists.linkClickListener = function(){
+  $('a.list_nav_link').on("click", List.linkClick)
 }
 
 List.ready = function(){
@@ -90,22 +99,18 @@ List.ready = function(){
   List.linkClickListener()
   // List.destroyListener()
 }
+Lists.ready = function(){
+  Lists.templateSource = $("#lists-template").html()
+  Lists.template = Handlebars.compile(Lists.templateSource);
+  Lists.linkClickListener()
+  // List.destroyListener()
+}
 
 List.prototype.renderDiv = function(){
   return List.template(this)
 }
 
 $(document).on('turbolinks:load', function(){
-  $("a#lists_link").on("click", function(e){
-    $.get(this.href).success(function(response){
-      var $ol = $("div#listed_lists ol")
-      $ol.html("")
-      response.forEach(function(list){
-        $ol.append("<li><a href="+`/users/${list.user_id}/lists/${list.id}`+">"+list.name+"</a></li>")
-      })
-    })
-
-    e.preventDefault()
-  })
   List.ready()
+  Lists.ready()
 })
