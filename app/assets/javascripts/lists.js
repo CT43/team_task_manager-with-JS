@@ -15,7 +15,6 @@ List.success = function(json){
   var listDiv = list.renderDiv()
   var $lists = $("div#lists")
   $lists.html("")
-  $("div#list_navigation").html("")
   $lists.append(listDiv)
 }
 
@@ -23,7 +22,7 @@ List.error = function(response){
   console.log("Yu broke it?", response)
 }
 
-List.formSubmit = function(e){
+List.linkClick = function(e){
   e.preventDefault()
 
   $.ajax({
@@ -64,14 +63,14 @@ List.destroy = function(json){
 //     .success(List.destroy)
 //   })
 // }
-List.formSubmitListener = function(){
-  $('a.list_nav_link').on("click", List.formSubmit)
+List.linkClickListener = function(){
+  $('a.list_nav_link').on("click", List.linkClick)
 }
 
 List.ready = function(){
   List.templateSource = $("#list-template").html()
   List.template = Handlebars.compile(List.templateSource);
-  List.formSubmitListener()
+  List.linkClickListener()
   // List.destroyListener()
 }
 
