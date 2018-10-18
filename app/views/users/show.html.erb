@@ -13,6 +13,17 @@
 
 <p>  <%= link_to "Create New List", new_user_list_path(@user) %></p>
 
-<!-- <div id="listed_lists">
-  <ol><li><a href="/users/1/lists/1">Monday</a></li><li><a href="/users/1/lists/2">Tuesday</a></li></ol>
-</div> -->
+
+
+<script id="lists-template" type="text/x-handlebars-template">
+  <div id="listed_lists">
+    <ol>
+      <li>
+        <a href="/users/1/lists/1">Monday</a>
+      </li>
+      <li>
+        <a href="/users/1/lists/2">Tuesday</a>
+      </li>
+    </ol>
+  </div>
+</script>
