@@ -1,11 +1,14 @@
 function List(attributes){
   this.name = attributes.name;
   this.id = attributes.id;
+  this.previous = this.id - 1
+  this.next = this.id + 1
   this.tasks = attributes.tasks;
   this.team = attributes.team;
   this.team_id = attributes.team_id;
   this.user = attributes.user;
   this.user_id = attributes.user_id;
+  this.tasks
   debugger
 }
 
