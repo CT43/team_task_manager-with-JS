@@ -23,7 +23,7 @@
       {{#each tasks}}
       <form class="edit_task" id="edit_task_{{id}}" action="/tasks/{{id}}" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="_method" value="patch"><input type="hidden" name="authenticity_token" value="3nrRL2Z2ZvyuPdKTpmID/Yg2CIVw5oIALoGTzi7DIZA34yXx2hjdfA+j7Zeq22Dow2/UJvfXmuOLWe+K5FPxPQ==">
         <label for="task_name">
-          <input name="task[completed]" type="hidden" value="0"><input type="checkbox" value="1" name="task[completed]" id="task_completed">
+          <input name="task[completed]" type="hidden" value="0"><input type="checkbox" value="1" {{#if completed}} checked="checked" {{/if}} name="task[completed]" id="task_completed">
           {{name}}
           <input type="submit" name="commit" value="Update Task" data-disable-with="Update Task">
         </label>

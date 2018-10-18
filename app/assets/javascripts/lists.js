@@ -8,8 +8,6 @@ function List(attributes){
   this.team_id = attributes.team_id;
   this.user = attributes.user;
   this.user_id = attributes.user_id;
-  this.tasks
-  debugger
 }
 
 List.success = function(json){
