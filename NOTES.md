@@ -10,3 +10,7 @@
 
 5. ** after all above tasks completed
     translate JSON responses to JS model objects
+
+take away partial
+
+use handlebars

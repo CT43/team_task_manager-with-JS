@@ -12,15 +12,15 @@ $(document).ready(function(){
     e.preventDefault()
   })
 
-  $("a#list_nav_link").on("click", function(e){
+  $("a.list_nav_link").on("click", function(e){
     $.get(this.href).success(function(response){
       var $lists = $("div#lists")
       $lists.html("")
-    debugger
+      debugger
 
 
 
-      $lists.append("<%= @list%>")
+      $lists.append("hello <%= @list%>")
     })
 
 
