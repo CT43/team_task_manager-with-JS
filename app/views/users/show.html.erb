@@ -18,12 +18,11 @@
 <script id="lists-template" type="text/x-handlebars-template">
   <div id="listed_lists">
     <ol>
+      {{#each lists}}
       <li>
-        <a href="/users/1/lists/1">Monday</a>
+        <a href="/users/{{user_id}}/lists/{{id}}">{{name}}</a>
       </li>
-      <li>
-        <a href="/users/1/lists/2">Tuesday</a>
-      </li>
+      {{/each}}
     </ol>
   </div>
 </script>
