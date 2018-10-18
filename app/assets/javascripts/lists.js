@@ -19,7 +19,7 @@ List.success = function(json){
 }
 
 List.error = function(response){
-  console.log("Yu broke it?", response)
+  console.log("whoops", response)
 }
 
 List.linkClick = function(e){
@@ -34,10 +34,6 @@ List.linkClick = function(e){
   .error(List.error)
 }
 
-List.destroy = function(json){
-  var list = new List(json);
-  list.destroy()
-}
 
 // List.prototype.$li = function(){
 //   return $("li#item_"+this.id)
@@ -65,6 +61,7 @@ List.destroy = function(json){
 // }
 List.linkClickListener = function(){
   $('a.list_nav_link').on("click", List.linkClick)
+  $("a#lists_link").on("click", List.listsClick)
 }
 
 List.ready = function(){
@@ -75,7 +72,6 @@ List.ready = function(){
 }
 
 List.prototype.renderDiv = function(){
-
   return List.template(this)
 }
 
