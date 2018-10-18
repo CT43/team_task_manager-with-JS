@@ -18,6 +18,14 @@ List.success = function(json){
   $lists.append(listDiv)
 }
 
+List.success = function(json){
+  var list = new List(json);
+  var listDiv = list.renderDiv()
+  var $lists = $("div#lists")
+  $lists.html("")
+  $lists.append(listDiv)
+}
+
 List.error = function(response){
   console.log("whoops", response)
 }
@@ -31,6 +39,18 @@ List.linkClick = function(e){
     method: "GET"
   })
   .success(List.success)
+  .error(List.error)
+}
+
+List.listsClick = function(e){
+  e.preventDefault()
+
+  $.ajax({
+    url: this.href,
+    dataType: "json",
+    method: "GET"
+  })
+  .success(List.lists)
   .error(List.error)
 }
 
