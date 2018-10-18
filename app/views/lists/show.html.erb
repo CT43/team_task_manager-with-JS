@@ -12,6 +12,9 @@
    <% if current_user.position > @list.user.position %>
     <%= link_to 'Delete', "/lists/#{@list.id}", method: :delete%>
   <% end %>
+  <div id="list_navigation">
+    <%= link_to "previous", "/users/#{@list.user_id}/lists/#{@list.id - 1}", class: "list_nav_link" %>     <%= link_to "next", "/users/#{@list.user_id}/lists/#{@list.id + 1}", class: "list_nav_link" %>
+  </div>
 </div>
 
 <script id="list-template" type="text/x-handlebars-template">
@@ -38,9 +41,6 @@
   </div>
 </script>
 
-</label></form>  <div id="list_navigation">
-     <a class="list_nav_link" href="/users/1/lists/0">previous</a>     <a class="list_nav_link" href="/users/1/lists/2">next</a>
-  </div>
 
 
 

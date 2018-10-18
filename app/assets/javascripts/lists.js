@@ -7,6 +7,8 @@ List.success = function(json){
   var list = new List(json);
   var listDiv = list.renderDiv()
   var $lists = $("div#lists")
+  $lists.html("")
+  $("div#list_navigation").html("")
   $lists.append(listDiv)
 }
 
@@ -67,6 +69,7 @@ List.ready = function(){
 }
 
 List.prototype.renderDiv = function(){
+
   return List.template(this)
 }
 
