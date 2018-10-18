@@ -1,14 +1,12 @@
 function List(attributes){
   this.name = attributes.name;
   this.id = attributes.id;
-  debugger
 }
 
 List.success = function(json){
   var list = new List(json);
   var listDiv = list.renderDiv()
   var $lists = $("div#lists")
-  debugger
   $lists.append(listDiv)
 }
 
@@ -59,7 +57,6 @@ List.destroy = function(json){
 // }
 List.formSubmitListener = function(){
   $('a.list_nav_link').on("click", List.formSubmit)
-  $('a.lister').on("click", List.formSubmit)
 }
 
 List.ready = function(){
@@ -70,7 +67,6 @@ List.ready = function(){
 }
 
 List.prototype.renderDiv = function(){
-  debugger
   return List.template(this)
 }
 
