@@ -58,31 +58,6 @@ Lists.linkClick = function(e){
   .error(List.error)
 }
 
-
-// List.prototype.$li = function(){
-//   return $("li#item_"+this.id)
-// }
-// List.prototype.destroy = function(){
-//   this.$li().remove();
-// }
-
-// List.destroyListener = function(){
-//   $("ul.todo-list").on("click", "input.destroy", function(e){
-//     e.preventDefault();
-//     // submit this form via ajax and then remove the item
-//     var $form = $(this).parent("form");
-//     var action = $form.attr("action");
-//     var params = $form.serialize();
-//
-//     $.ajax({
-//       url: action,
-//       data: params,
-//       dataType: "json",
-//       method: "DELETE"
-//     })
-//     .success(List.destroy)
-//   })
-// }
 List.linkClickListener = function(){
   $('a.list_nav_link').on("click", List.linkClick)
 }
