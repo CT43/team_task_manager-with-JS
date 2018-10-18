@@ -46,10 +46,9 @@ List.linkClick = function(e){
   .error(List.error)
 }
 
-List.listsClick = function(e){
-  debugger
+Lists.linkClick = function(e){
   e.preventDefault()
-  debugger
+
 
   $.ajax({
     url: this.href,
@@ -90,25 +89,38 @@ List.linkClickListener = function(){
 }
 
 Lists.linkClickListener = function(){
-  $('a.list_nav_link').on("click", List.linkClick)
+  $('a#listed_lists').on("click", Lists.linkClick)
 }
 
 List.ready = function(){
   List.templateSource = $("#list-template").html()
   List.template = Handlebars.compile(List.templateSource);
   List.linkClickListener()
-  // List.destroyListener()
 }
+
 Lists.ready = function(){
   Lists.templateSource = $("#lists-template").html()
   Lists.template = Handlebars.compile(Lists.templateSource);
   Lists.linkClickListener()
-  // List.destroyListener()
 }
 
 List.prototype.renderDiv = function(){
   return List.template(this)
 }
+
+$(document).on('turbolinks:load', function(){
+  $("a#lists_link").on("click", function(e){
+    $.get(this.href).success(function(response){
+      var $ol = $("div#listed_lists ol")
+      $ol.html("")
+      response.forEach(function(list){
+        $ol.append("<li><a href="+`/users/${list.user_id}/lists/${list.id}`+">"+list.name+"</a></li>")
+      })
+    })
+
+    e.preventDefault()
+  })
+})
 
 $(document).on('turbolinks:load', function(){
   List.ready()
