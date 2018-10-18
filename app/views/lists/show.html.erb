@@ -34,18 +34,3 @@
       </div>
   </div>
 </script>
-
-
-
-
-
-
-
-      <form class="button_to" method="post" action="/lists/<%= @list.id %>/items/{{id}}">
-        <input type="hidden" name="_method" value="delete">
-        <input class="destroy" type="submit" value="x">
-        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-      </form>
-    </div>
-  </li>
-</script> -->
