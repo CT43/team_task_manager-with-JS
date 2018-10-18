@@ -25,6 +25,18 @@ class ListsController < ApplicationController
     end
   end
 
+  def update
+    if params[:user_id]
+      @list = List.find_by(id: params[:id])
+      respond_to do |format|
+          format.json {render :json => @list}
+          format.html {render 'show.html.erb'}
+      end
+    else
+      redirect_to root_path
+    end
+  end
+
   def index
     if params[:user_id]
       @lists = User.find(params[:user_id]).lists

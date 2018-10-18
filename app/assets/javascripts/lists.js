@@ -8,6 +8,8 @@ function List(attributes){
   this.team_id = attributes.team_id;
   this.user = attributes.user;
   this.user_id = attributes.user_id;
+  this.task_counter = attributes.tasks.count + 1
+  debugger
 }
 
 function Lists(attributes){
@@ -87,7 +89,8 @@ Lists.prototype.renderDiv = function(){
 }
 
 $(document).on('turbolinks:load', function(){
-    Lists.ready()
   List.ready()
+    Lists.ready()
+
 
 })
