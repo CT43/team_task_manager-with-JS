@@ -41,7 +41,7 @@ class ListsController < ApplicationController
     if params[:user_id]
       @list = List.find_by(id: params[:id])
       respond_to do |format|
-          format.js {render :json => @list}
+          format.json {render :json => @list}
           format.html {render 'show.html.erb'}
       end
     else

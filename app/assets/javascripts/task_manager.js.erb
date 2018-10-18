@@ -1,4 +1,5 @@
-$(document).ready(function(){
+
+$(document).on('turbolinks:load', function(){
   $("a#lists_link").on("click", function(e){
     $.get(this.href).success(function(response){
       var $ol = $("div#listed_lists ol")
@@ -19,8 +20,8 @@ $(document).ready(function(){
       debugger
 
 
-
-      $lists.append("hello <%= @list%>")
+      var html = '<% escape_javascript @list%>'
+      $lists.html(html)
     })
 
 
