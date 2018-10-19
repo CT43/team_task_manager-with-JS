@@ -26,7 +26,6 @@ class ListsController < ApplicationController
   end
 
   def update
-    binding.pry
       @list = List.find_by(id: params[:id])
       @task = Task.new
       @task.name = list_params[:tasks_attributes][:"0"][:name]

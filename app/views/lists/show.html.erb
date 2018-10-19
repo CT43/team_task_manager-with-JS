@@ -14,18 +14,12 @@
   <% end %>
   <%= form_for(@list) do |f| %>
     <form class="edit_list" id="edit_list_<%=@list.id%>" action="/lists/<%=@list.id%>" accept-charset="UTF-8" method="post">
-      <input name="utf8" type="hidden" value="✓">
+      <input type="hidden" name="new_user_num" id="new_user_num" value="<%=@list.user_id%>">
       <input type="text" name="list[tasks_attributes][0][name]" id="list_tasks_attributes_0_name">
       <input type="submit" name="commit" value="Update List" data-disable-with="Update List">
     </form>
   <% end %>
 
-  <%= form_for(@list) do |f| %>
-    <%= hidden_field_tag :new_user_num, "#{@user_id}" %>
-    <%= f.fields_for :tasks, @list.tasks.build do |tasks| %>
-      <%= tasks.text_field :name %>
-    <% end %> <%= f.submit %>
-  <% end %>
   <div id="list_navigation">
     <%= link_to "previous", "/users/#{@list.user_id}/lists/#{@list.id - 1}", class: "list_nav_link" %>     <%= link_to "next", "/users/#{@list.user_id}/lists/#{@list.id + 1}", class: "list_nav_link" %>
   </div>
@@ -56,25 +50,3 @@
       </div>
   </div>
 </script>
-
-
-    <!-- <form class="edit_list" id="edit_list_2" action="/lists/2" accept-charset="UTF-8" method="post">
-      <input name="utf8" type="hidden" value="✓">
-      <input type="hidden" name="_method" value="patch">
-      <input type="hidden" name="authenticity_token" value="wWpvKNhLUKbkVngBV+YH0cA0X8yWLD1feP0KlVDvJoIo85v2ZCXrJkXIRwVbX2TEi22DbxEdJbzdJXbRmn/2Lw==">
-      <input name="utf8" type="hidden" value="✓">
-      <input type="hidden" name="_method" value="patch">
-      <input type="hidden" name="authenticity_token" id="authenticity_token" value="wWpvKNhLUKbkVngBV+YH0cA0X8yWLD1feP0KlVDvJoIo85v2ZCXrJkXIRwVbX2TEi22DbxEdJbzdJXbRmn/2Lw==">
-      <input type="hidden" name="new_user_num" id="new_user_num" value="1">
-      <input type="text" name="list[tasks_attributes][4][name]" id="list_tasks_attributes_4_name">
-      <input type="submit" name="commit" value="Update List" data-disable-with="Update List">
-    </form>
-
-    <form class="edit_list" id="edit_list_2" action="/lists/2" accept-charset="UTF-8" method="post">
-      <input name="utf8" type="hidden" value="✓">
-      <input type="hidden" name="_method" value="patch">
-      <input type="hidden" name="authenticity_token" value="wWpvKNhLUKbkVngBV+YH0cA0X8yWLD1feP0KlVDvJoIo85v2ZCXrJkXIRwVbX2TEi22DbxEdJbzdJXbRmn/2Lw==">
-      <input type="hidden" name="new_user_num" id="new_user_num" value="">
-      <input type="text" name="list[tasks_attributes][0][name]" id="list_tasks_attributes_0_name">
-      <input type="submit" name="commit" value="Update List" data-disable-with="Update List">
-    </form> -->
