@@ -26,15 +26,16 @@ class ListsController < ApplicationController
   end
 
   def update
-    if params[:user_id]
+    binding.pry
       @list = List.find_by(id: params[:id])
+      @task = Task.new
+      @task.name = list_params[:tasks_attributes][:"0"][:name]
+      @task.list_id = @list.id
+      @task.save
       respond_to do |format|
           format.json {render :json => @list}
           format.html {render 'show.html.erb'}
       end
-    else
-      redirect_to root_path
-    end
   end
 
   def index

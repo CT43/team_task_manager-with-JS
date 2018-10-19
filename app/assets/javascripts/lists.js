@@ -71,7 +71,6 @@ Lists.linkClickListener = function(){
   $('a#lists_link').on("click", Lists.linkClick)
 }
 
-
 List.prototype.renderDiv = function(){
   return List.template(this)
 }
