@@ -57,7 +57,6 @@ List.newTask = function(e){
   var $form = $(this);
   var action = $form.attr("action");
   var params = $form.serialize();
-  debugger
   $.ajax({
     url: this.href,
     data: params,
