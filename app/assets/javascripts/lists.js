@@ -8,8 +8,7 @@ function List(attributes){
   this.team_id = attributes.team_id;
   this.user = attributes.user;
   this.user_id = attributes.user_id;
-  this.task_counter = attributes.tasks.count + 1
-  debugger
+  this.task_counter = attributes.tasks.length + 1
 }
 
 function Lists(attributes){
@@ -38,6 +37,8 @@ List.error = function(response){
 
 List.linkClick = function(e){
   e.preventDefault()
+  List.templateSource = $("#list-template").html()
+  List.template = Handlebars.compile(List.templateSource);
 
   $.ajax({
     url: this.href,
@@ -50,6 +51,8 @@ List.linkClick = function(e){
 
 Lists.linkClick = function(e){
   e.preventDefault()
+  Lists.templateSources = $("#lists-template").html()
+  Lists.templates = Handlebars.compile(Lists.templateSources);
 
   $.ajax({
     url: this.href,
@@ -68,17 +71,6 @@ Lists.linkClickListener = function(){
   $('a#lists_link').on("click", Lists.linkClick)
 }
 
-List.ready = function(){
-  List.templateSource = $("#list-template").html()
-  List.template = Handlebars.compile(List.templateSource);
-  List.linkClickListener()
-}
-
-Lists.ready = function(){
-  Lists.templateSources = $("#lists-template").html()
-  Lists.templates = Handlebars.compile(Lists.templateSources);
-  Lists.linkClickListener()
-}
 
 List.prototype.renderDiv = function(){
   return List.template(this)
@@ -89,8 +81,6 @@ Lists.prototype.renderDiv = function(){
 }
 
 $(document).on('turbolinks:load', function(){
-  List.ready()
-    Lists.ready()
-
-
+  List.linkClickListener()
+  Lists.linkClickListener()
 })

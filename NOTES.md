@@ -11,6 +11,7 @@
 5. ** after all above tasks completed
     translate JSON responses to JS model objects
 
-take away partial
 
-use handlebars
+you are in the midst of adding submit form dynamically but ran into bug where only one listReady loads
+
+Career coach notes
