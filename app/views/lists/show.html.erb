@@ -16,7 +16,7 @@
     <form class="edit_list" id="edit_list_<%=@list.id%>" action="/lists/<%=@list.id%>" accept-charset="UTF-8" method="post">
       <input type="hidden" name="new_user_num" id="new_user_num" value="<%=@list.user_id%>">
       <input type="text" name="list[tasks_attributes][0][name]" id="list_tasks_attributes_0_name">
-      <input type="submit" name="commit" value="Update List" data-disable-with="Update List">
+      <input type="submit" name="commit" value="Update List" data-disable-with="Update List"  class="new_task_submit">
     </form>
   <% end %>
 
@@ -43,7 +43,7 @@
         <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
         <input type="hidden" name="new_user_num" id="new_user_num" value="{{user_id}}">
         <input type="text" name="list[tasks_attributes][0][name]" id="list_tasks_attributes_0_name">
-        <input type="submit" name="commit" value="Update List" data-disable-with="Update List">
+        <input type="submit" name="commit" value="Update List" data-disable-with="Update List"  class="new_task_submit">
       </form>
       <div id="list_navigation">
        <a class="list_nav_link" href="/users/{{user_id}}/lists/{{previous}}">previous</a>     <a class="list_nav_link" href="/users/{{user_id}}/lists/{{next}}">next</a>

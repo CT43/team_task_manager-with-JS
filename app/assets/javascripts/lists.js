@@ -63,14 +63,6 @@ Lists.linkClick = function(e){
   .error(List.error)
 }
 
-List.linkClickListener = function(){
-  $('a.list_nav_link').on("click", List.linkClick)
-}
-
-Lists.linkClickListener = function(){
-  $('a#lists_link').on("click", Lists.linkClick)
-}
-
 List.prototype.renderDiv = function(){
   return List.template(this)
 }
@@ -80,6 +72,7 @@ Lists.prototype.renderDiv = function(){
 }
 
 $(document).on('turbolinks:load', function(){
-  List.linkClickListener()
-  Lists.linkClickListener()
+  $('input.new_task_submit').on("click", List.linkClick)
+  $('a#lists_link').on("click", Lists.linkClick)
+  $('a.list_nav_link').on("click", List.linkClick)
 })
