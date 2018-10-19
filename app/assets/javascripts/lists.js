@@ -49,6 +49,25 @@ List.linkClick = function(e){
   .error(List.error)
 }
 
+List.newTask = function(e){
+  e.preventDefault()
+  List.templateSource = $("#list-template").html()
+  List.template = Handlebars.compile(List.templateSource);
+
+  var $form = $(this);
+  var action = $form.attr("action");
+  var params = $form.serialize();
+  debugger
+  $.ajax({
+    url: this.href,
+    data: params,
+    dataType: "json",
+    method: "POST"
+  })
+  .success(List.success)
+  .error(List.error)
+}
+
 Lists.linkClick = function(e){
   e.preventDefault()
   Lists.templateSources = $("#lists-template").html()
@@ -72,7 +91,7 @@ Lists.prototype.renderDiv = function(){
 }
 
 $(document).on('turbolinks:load', function(){
-  $('input.new_task_submit').on("click", List.linkClick)
+  $('form.edit_list').on("submit", List.newTask)
   $('a#lists_link').on("click", Lists.linkClick)
   $('a.list_nav_link').on("click", List.linkClick)
 })
