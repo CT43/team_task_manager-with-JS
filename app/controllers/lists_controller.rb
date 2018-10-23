@@ -54,7 +54,6 @@ class ListsController < ApplicationController
   end
 
   def show
-
     @list = List.find_by(id: params[:id])
     if params[:currentTarget] === "next"
       @nextList = List.where("user_id = ?", @list.user_id).where("id > ?", @list.id).first
