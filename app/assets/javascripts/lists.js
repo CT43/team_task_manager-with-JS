@@ -89,8 +89,8 @@ Lists.prototype.renderDiv = function(){
   return Lists.templates(this)
 }
 
-$(document).on('turbolinks:load', function(){
-  $('form.edit_list').on("submit", List.newTask)
-  $('a#lists_link').on("click", Lists.linkClick)
-  $('a.list_nav_link').on("click", List.linkClick)
+$(document).ready(function(){
+  $(document).on('submit', 'form.edit_list', List.newTask);
+  $(document).on('click', 'a#lists_link', Lists.linkClick);
+  $(document).on('click', 'a.list_nav_link', List.linkClick);
 })
