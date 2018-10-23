@@ -26,7 +26,8 @@ class ListsController < ApplicationController
   end
 
   def update
-      @list = List.find_by(id: params[:real_id])
+    @list = List.find_by(id: params[:real_id])
+    if params[:user_id] === @list.user_id.to_s
       @task = Task.new
       @task.name = list_params[:tasks_attributes][:"0"][:name]
       @task.list_id = @list.id
@@ -35,6 +36,9 @@ class ListsController < ApplicationController
           format.json {render :json => @list}
           format.html {render 'show.html.erb'}
       end
+    else
+      redirect_to root_path
+    end
   end
 
   def index
@@ -50,15 +54,16 @@ class ListsController < ApplicationController
   end
 
   def show
-    if params[:user_id]
-      @list = List.find_by(id: params[:id])
-      respond_to do |format|
-          format.json {render :json => @list}
-          format.html {render 'show.html.erb'}
-      end
-    else
-      redirect_to root_path
-    end
+    # if params[:user_id]
+    @list = List.find_by(id: params[:id])
+      # if params[:user_id] === @list.user_id.to_s
+        respond_to do |format|
+            format.json {render :json => @list}
+            format.html {render 'show.html.erb'}
+        end
+      # else
+      #   redirect_to root_path
+      # end
   end
 
   def destroy
