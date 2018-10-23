@@ -39,10 +39,12 @@ List.linkClick = function(e){
   e.preventDefault()
   List.templateSource = $("#list-template").html()
   List.template = Handlebars.compile(List.templateSource);
-
   $.ajax({
     url: this.href,
     dataType: "json",
+    data: {
+    currentTarget: e.currentTarget.className,
+  },
     method: "GET"
   })
   .success(List.success)
@@ -92,5 +94,6 @@ Lists.prototype.renderDiv = function(){
 $(document).ready(function(){
   $(document).on('submit', 'form.edit_list', List.newTask);
   $(document).on('click', 'a#lists_link', Lists.linkClick);
-  $(document).on('click', 'a.list_nav_link', List.linkClick);
+  $(document).on('click', 'a.next', List.linkClick);
+  $(document).on('click', 'a.previous', List.linkClick);
 })

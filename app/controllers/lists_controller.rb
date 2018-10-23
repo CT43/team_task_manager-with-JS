@@ -54,16 +54,26 @@ class ListsController < ApplicationController
   end
 
   def show
-    # if params[:user_id]
+
     @list = List.find_by(id: params[:id])
-      # if params[:user_id] === @list.user_id.to_s
-        respond_to do |format|
-            format.json {render :json => @list}
-            format.html {render 'show.html.erb'}
-        end
-      # else
-      #   redirect_to root_path
-      # end
+    if params[:currentTarget] === "next"
+      @nextList = List.where("user_id = ?", @list.user_id).where("id > ?", @list.id).first
+      respond_to do |format|
+          format.json {render :json => @nextList}
+          format.html {render 'show.html.erb'}
+      end
+    elsif params[:currentTarget] === "previous"
+      @previousList = List.where("user_id = ?", @list.user_id).where("id < ?", @list.id).last
+      respond_to do |format|
+          format.json {render :json => @previousList}
+          format.html {render 'show.html.erb'}
+      end
+    else
+      respond_to do |format|
+          format.json {render :json => @list}
+          format.html {render 'show.html.erb'}
+      end
+    end
   end
 
   def destroy

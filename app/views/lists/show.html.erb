@@ -22,7 +22,7 @@
   <% end %>
 
   <div id="list_navigation">
-    <%= link_to "previous", "/users/#{@list.user_id}/lists/#{@list.id - 1}", class: "list_nav_link" %>     <%= link_to "next", "/users/#{@list.user_id}/lists/#{@list.id + 1}", class: "list_nav_link" %>
+    <%= link_to "previous", "/users/#{@list.user_id}/lists/#{@list.id}", class: "previous" %>     <%= link_to "next", "/users/#{@list.user_id}/lists/#{@list.id}", class: "next" %>
   </div>
 </div>
 
@@ -49,7 +49,7 @@
         <input type="submit" name="commit" value="Update List" data-disable-with="Update List"  class="new_task_submit">
       </form>
       <div id="list_navigation">
-       <a class="list_nav_link" href="/users/{{user_id}}/lists/{{previous}}">previous</a>     <a class="list_nav_link" href="/users/{{user_id}}/lists/{{next}}">next</a>
+       <a class="previous" href="/users/{{user_id}}/lists/{{id}}">previous</a>     <a class="next" href="/users/{{user_id}}/lists/{{id}}">next</a>
       </div>
   </div>
 </script>
