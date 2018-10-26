@@ -11,9 +11,10 @@
 5. ** after all above tasks completed
     translate JSON responses to JS model objects
 
-something with new_user num in form for?
+post review notes
 
+have to make a button on lists index that alphabatizes the lists
 
-refactor!!
-blog POST
-Video
+Think about Lists List - shouldn't be a need for both?
+
+Js exercises after reviewing homework piece

@@ -13,6 +13,7 @@ function List(attributes){
 
 function Lists(attributes){
   this.lists = attributes
+  this.user_id = attributes[0].user_id
 }
 
 List.success = function(json){
@@ -25,10 +26,31 @@ List.success = function(json){
 
 Lists.success = function(json){
   var lists = new Lists(json);
+
   var listsDiv = lists.renderDiv()
   var $lists = $("div#listed_lists")
   $lists.html("")
   $lists.append(listsDiv)
+}
+
+Lists.alphaSuccess = function(json){
+    var lists = new Lists(json)
+    var sortedLists = lists.lists.sort(function(a, b) {
+      var nameA = a.name.toUpperCase(); // ignore upper and lowercase
+      var nameB = b.name.toUpperCase(); // ignore upper and lowercase
+      if (nameA < nameB) {
+        return -1;
+      }
+      if (nameA > nameB) {
+        return 1;
+      }
+      // names must be equal
+      return 0;
+    });;
+  var listsDiv = lists.renderDiv()
+  var $sortedLists = $("div#listed_lists")
+  $sortedLists.html("")
+  $sortedLists.append(listsDiv)
 }
 
 List.error = function(response){
@@ -73,13 +95,25 @@ Lists.linkClick = function(e){
   e.preventDefault()
   Lists.templateSources = $("#lists-template").html()
   Lists.templates = Handlebars.compile(Lists.templateSources);
-
   $.ajax({
     url: this.href,
     dataType: "json",
     method: "GET"
   })
   .success(Lists.success)
+  .error(List.error)
+}
+
+Lists.alphabatizeClick = function(e){
+  e.preventDefault()
+  Lists.templateSources = $("#lists-template").html()
+  Lists.templates = Handlebars.compile(Lists.templateSources);
+  $.ajax({
+    url: $(this).attr("href"),
+    dataType: "json",
+    method: "GET"
+  })
+  .success(Lists.alphaSuccess)
   .error(List.error)
 }
 
@@ -96,4 +130,5 @@ $(document).ready(function(){
   $(document).on('click', 'a#lists_link', Lists.linkClick);
   $(document).on('click', 'a.next', List.linkClick);
   $(document).on('click', 'a.previous', List.linkClick);
+  $(document).on('click', '#alpha', Lists.alphabatizeClick);
 })
